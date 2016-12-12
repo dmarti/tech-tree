@@ -1,10 +1,13 @@
 all : techtree.svg
 
-%.svg : %.txt
+%.gv : %.txt
+	sed 's/shape=/fontname="Sans-Serif", shape=/g' $< > $@
+
+%.svg : %.gv
 	neato -Tsvg $< > $@
 
 clean :
-	echo "FIXME"
+	rm -f techtree.gv techtree.svg
 
 .PHONY : all clean hooks spell epub
 
