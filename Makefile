@@ -15,7 +15,7 @@ deploy : all
 	sed 's/shape=/fontname="Sans-Serif", shape=/g' $< > $@
 
 %.svg : %.gv
-	neato -Tsvg $< > $@
+	dot -Tsvg $< > $@
 
 clean :
 	rm -f techtree.gv techtree.svg

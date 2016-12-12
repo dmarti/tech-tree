@@ -1,79 +1,157 @@
 digraph Technology {
 
-node [shape=octagon]; "Surveillance"; 
-node [shape=octagon]; "Filter bubbles";
-node [shape=octagon]; Harassment;
-node [shape=octagon]; Burnout;
+# Mozilla technologies
+node [color=red, shape=oval]; Rust;
+node [shape=oval]; "tracking protection";
+node [shape=oval]; "bug bounties";
+node [shape=oval]; WebExtensions;
+node [shape=oval]; WebAssembly;
+node [shape=oval]; "browser performance";
+node [shape=oval]; "Test Pilot";
 
+
+# General research topics
+node [color=black, shape=oval]; AR;
 node [shape=oval]; biometrics;
-node [shape=oval]; conferences;
-node [shape=oval]; cryptocurrency;
-node [shape=oval]; blockchain;
 node [shape=oval]; DHT;
 node [shape=oval]; NLP;
-node [shape=oval]; gamification;
+node [shape=oval]; "sentiment analysis";
+"sentiment analysis"->NLP;
+node [shape=oval]; cryptocurrency;
+node [shape=oval]; blockchain;
+cryptocurrency->blockchain;
 node [shape=oval]; security;
-node [shape=oval]; WebExtensions;
-node [shape=oval]; Rust;
-node [shape=oval]; "tracking protection";
-node [shape=oval]; "maintenance programming";
-node [shape=oval]; "quantified self";
-node [shape=oval]; IoT;
+node [shape=oval]; microkernels;
 node [shape=oval]; Tor;
 node [shape=oval]; QoS;
-node [shape=oval]; SEO;
-node [shape=oval]; microkernels;
-node [shape=oval]; "Literate Programming";
 node [shape=oval]; bots;
+node [shape=oval]; "data visualization";
+node [shape=oval]; "version control";
+node [shape=oval]; VR;
 
-node [shape=box]; "Text Anonymization";
 
-node [shape=box]; "HTML merge";
+# General meta topics
+node [shape=oval]; conferences;
+node [shape=oval]; gamification;
+node [shape=oval]; gaming;
+node [shape=oval]; IoT;
+node [shape=oval]; "maintenance programming";
+node [shape=oval]; "quantified self";
+node [shape=oval]; SEO;
+node [shape=oval]; "Literate Programming";
 
-cryptocurrency->blockchain;
+
+# security 
 security->Rust;
 IoT->security;
-security->Fingerprinting;
+IoT->Rust;
 security->"tracking protection";
 security->microkernels;
-"tracking protection"->WebExtensions;
+security->"bug bounties";
 security->"maintenance programming";
 "maintenance programming"->Rust;
-"maintenance programming"->Participation;
 "maintenance programming"->"Literate Programming";
 
-##
-node [shape=box]; "Web Sustainability";
-"Web Sustainability"->"Participatory Publishing";
-"Web Sustainability"->"Adfraud";
-"Web Sustainability"->"Incentives";
 
-##
+# performance
+"data visualization"->"browser performance";
+gaming->"browser performance";
+"browser performance"->WebAssembly;
+"browser performance"->Rust;
+"data visualization"->VR;
+VR->"browser performance";
+VR->biometrics;
+"browser performance"->QoS;
+
+
+# Web sustainability
+node [shape=box]; "Web Publishing";
+node [shape=box]; incentives;
+node [shape=octagon]; Adfraud;
+node [shape=box]; Markets;
+"Web Publishing"->"Adfraud";
+"Web Publishing"->incentives;
+"Web Publishing"->Markets;
+"Web Publishing"->"tracking protection";
+"tracking protection"->WebExtensions;
+
+
+# Participation and community
 node [shape=box]; Participation;
+node [shape=box]; "Idea platform";
+node [shape=octagon]; Harassment;
+node [shape=octagon]; Burnout;
 Participation->Harassment;
 Participation->Burnout;
-Participation->Incentives;
+Participation->incentives;
 Participation->SEO;
 Participation->conferences;
+Participation->"Idea platform";
+Participation->"Test Pilot";
 conferences->Harassment;
 Participation->bots;
 Participation->"Literate Programming";
-Incentives->"Prediction Markets";
-Incentives->"quantified self";
 Harassment->NLP;
-Harassment->"Text Anonymization";
-Participation->"Participatory Publishing";
+Participation->"Web Publishing";
 Participation->gamification;
 "Literate Programming"->SEO;
-"Literate Programming"->"Participatory Publishing";
 Burnout->"quantified self";
+"maintenance programming"->Participation;
 
-##
-node [shape=box]; "Prediction Markets";
-"Prediction Markets"->Tor;
-"Prediction Markets"->cryptocurrency
 
-##
+# Markets and incentives
+incentives->Markets;
+Markets->Tor;
+Markets->cryptocurrency
+"bug bounties"->incentives;
+"bug bounties"->Markets;
+incentives->"quantified self";
+Markets->"data visualization";
+gamification->Markets;
+"Idea platform"->Markets;
+"Idea platform"->gamification;
+incentives->gamification;
+
+
+# Filter bubbles
+node [shape=box]; "Filter Un-bubbling";
+node [shape=octagon]; "Filter bubbles";
+"Filter Un-bubbling"->gamification;
+"Filter Un-bubbling"->WebExtensions;
+"Filter Un-bubbling"->"Filter bubbles";
+"Filter Un-bubbling"->"NLP";
+"Filter Un-bubbling"->"data visualization";
+"Filter bubbles"->"Surveillance";
+Adfraud->"Filter bubbles";
+conferences->"Filter bubbles";
+"Web Publishing"->"Filter bubbles";
+
+
+# privacy
+node [shape=box]; "Text Anonymization";
+node [shape=octagon]; Fingerprinting;
+node [shape=octagon]; "Surveillance";
+security->Fingerprinting;
+SEO->"Text Anonymization";
+"Text Anonymization"->NLP;
+Surveillance->"Text Anonymization";
+Adfraud->Surveillance;
+Surveillance->biometrics;
+Surveillance->security;
+Adfraud->Fingerprinting;
+"tracking protection"->Surveillance;
+"tracking protection"->Fingerprinting;
+Fingerprinting->biometrics;
+AR->security;
+
+
+# quantified self and gaming
+"quantified self"->AR;
+"quantified self"->gamification;
+gamification->gaming;
+
+
+# The Router
 node [shape=box]; Router;
 Router->security;
 Router->Surveillance;
@@ -84,48 +162,47 @@ Router->Tor;
 Router->QoS;
 "quantified self"->NLP;
 
-##
-node [shape=box]; "Filter Un-bubbling";
-"Filter Un-bubbling"->gamification;
-"Filter Un-bubbling"->WebExtensions;
-"Filter Un-bubbling"->"Filter bubbles";
-"Filter Un-bubbling"->"NLP";
-"Filter bubbles"->"Surveillance";
-
-SEO->"Text Anonymization";
-"Text Anonymization"->NLP;
-Surveillance->"Text Anonymization";
 
 ##
-node [shape=octagon]; Adfraud;
-node [shape=octagon]; Fingerprinting;
-Adfraud->Surveillance;
-Surveillance->biometrics;
-Surveillance->security;
-Adfraud->Fingerprinting;
-"tracking protection"->Surveillance;
-"tracking protection"->Fingerprinting;
-Adfraud->"Filter bubbles";
-
-##
-node [shape=box]; "Participatory Publishing";
 node [shape=box]; "Censorship Resistance";
-
+node [shape=box]; "HTML merge";
 "Censorship Resistance"->blockchain;
-"Censorship Resistance"->"Participatory Publishing";
+"Censorship Resistance"->"Web Publishing";
 "Censorship Resistance"->security;
 "Censorship Resistance"->Tor;
 "Censorship Resistance"->"Text Anonymization";
-
-"Participatory Publishing"->DHT;
-"Participatory Publishing"->"HTML merge";
+"Web Publishing"->DHT;
+"Web Publishing"->"HTML merge";
 "HTML merge"->"Literate Programming";
-"Participatory Publishing"->Harassment;
+"Web Publishing"->Harassment;
+"Web Publishing"->incentives;
 
-## 
+
+# Version control
+"Web Publishing"->"version control";
+"maintenance programming"->"version control";
+"bots"->"version control";
+"Large Data Set Collaboration"->"version control";
+"version control"->"DHT";
+"version control"->"HTML merge";
+"quantified self"->"version control";
+
+
+# Open Source health
+node [shape=box]; "Open Source metrics";
+"Open Source metrics"->Harassment;
+"Open Source metrics"->"sentiment analysis";
+"Open Source metrics"->"version control";
+"Open Source metrics"->"incentives";
+"Open Source metrics"->"data visualization";
+"Open Source metrics"->bots;
+"Participation"->"Open Source metrics";
+
+# Big Data science!
 node [shape=box]; "Large Data Set Collaboration";
 "Large Data Set Collaboration"->"DHT";
-"Large Data Set Collaboration"->"blockchain";
+"Large Data Set Collaboration"->blockchain;
+"Large Data Set Collaboration"->"data visualization";
 
 overlap=false
 }
