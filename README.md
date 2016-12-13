@@ -1,9 +1,12 @@
 # tech-tree
-Technology tree for topics relevant to open source experiments
+
+Technology tree for open source experiments.  [View
+here](https://dmarti.github.io/tech-tree/).
+
 
 ## Setup
 
-Install graphviz to provide the "neato" command.
+Install graphviz.
 
 ```sh
 sudo dnf install graphviz
@@ -14,4 +17,10 @@ sudo dnf install graphviz
 
 ```sh
 make
+```
+
+## Publish
+
+```sh
+make deploy
 ```
