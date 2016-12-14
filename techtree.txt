@@ -27,6 +27,7 @@ node [shape=oval]; microkernels;
 node [shape=oval]; Tor;
 node [shape=oval]; QoS;
 node [shape=oval]; bots;
+bots->NLP;
 node [shape=oval]; "data visualization";
 node [shape=oval]; "version control";
 node [shape=oval]; VR;
@@ -158,6 +159,8 @@ Harassment->"Text Anonymization";
 "quantified self"->gamification;
 gamification->gaming;
 "Remote collaboration"->"quantified self";
+"quantified self"->NLP;
+"quantified self"->"sentiment analysis";
 
 
 # The Router
@@ -170,7 +173,6 @@ Router->"quantified self";
 Router->IoT;
 Router->Tor;
 Router->QoS;
-"quantified self"->NLP;
 Router->"content-addressable storage"
 
 
@@ -182,12 +184,13 @@ node [shape=box]; "HTML merge";
 "Censorship Resistance"->security;
 "Censorship Resistance"->Tor;
 "Censorship Resistance"->"Text Anonymization";
+"Censorship Resistance"->"content-addressable storage";
+"Censorship Resistance"->"Remote collaboration";
 "Web Publishing"->DHT;
 "Web Publishing"->"HTML merge";
 "HTML merge"->"Literate Programming";
 "Web Publishing"->Harassment;
 "Web Publishing"->incentives;
-"Web Publishing"->"Remote collaboration";
 
 
 # Version control
@@ -223,12 +226,15 @@ node [shape=box]; "Large Data Set Collaboration";
 
 
 # Remote collaboration
+"Web Publishing"->"Remote collaboration";
 "Remote collaboration"->"version control";
 "Remote collaboration"->conferences;
 "Remote collaboration"->"Large Data Set Collaboration";
 "Remote collaboration"->incentives;
 "Remote collaboration"->AR;
 "Remote collaboration"->VR;
+"Remote collaboration"->Router;
+"Remote collaboration"->Burnout;
 
 overlap=false
 }
