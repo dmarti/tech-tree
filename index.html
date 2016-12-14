@@ -6,16 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   </head>
   <body>
-	<img src="techtree.svg" width="100%">
-	<iframe id="raw" style="border: 0px;" 
+	<img src="techtree.svg" width="100%" style="margin-top: 2ex;">
+	<iframe id="raw" style="margin-top: 4ex; border: 0px;" 
 	    src="techtree.txt" width="100%"></iframe>
 
-    <p><a href="https://github.com/dmarti/tech-tree">Project on GitHub</a></p>
+    <p><a href="https://github.com/dmarti/tech-tree">Comments
+    or suggestions? See the repository on GitHub.</a></p>
 
     <script type="text/javascript">
    function fixIframe() {
 		e = document.getElementById("raw");
-		e.height = e.contentDocument.body.offsetHeight + 50;
+		e.height = e.contentDocument.body.offsetHeight + 40;
 	}
 	window.addEventListener("load", fixIframe, false);
 	</script>

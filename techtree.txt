@@ -1,4 +1,4 @@
-digraph Technology {
+digraph TechnologyTree {
 
 # Mozilla technologies
 node [color=red, shape=oval]; Rust;
@@ -8,7 +8,7 @@ node [shape=oval]; WebExtensions;
 node [shape=oval]; WebAssembly;
 node [shape=oval]; "browser performance";
 node [shape=oval]; "Test Pilot";
-
+"Test Pilot"->WebExtensions;
 
 # General research topics
 node [color=black, shape=oval]; AR;
@@ -20,6 +20,8 @@ node [shape=oval]; "sentiment analysis";
 node [shape=oval]; cryptocurrency;
 node [shape=oval]; blockchain;
 cryptocurrency->blockchain;
+node [shape=oval]; "Merkle trees";
+node [shape=oval]; "content-addressable storage";
 node [shape=oval]; security;
 node [shape=oval]; microkernels;
 node [shape=oval]; Tor;
@@ -39,6 +41,7 @@ node [shape=oval]; "maintenance programming";
 node [shape=oval]; "quantified self";
 node [shape=oval]; SEO;
 node [shape=oval]; "Literate Programming";
+node [shape=oval]; "Remote collaboration";
 
 
 # security 
@@ -99,6 +102,7 @@ Burnout->"quantified self";
 "maintenance programming"->Participation;
 
 
+
 # Markets and incentives
 incentives->Markets;
 Markets->Tor;
@@ -111,6 +115,7 @@ gamification->Markets;
 "Idea platform"->Markets;
 "Idea platform"->gamification;
 incentives->gamification;
+SEO->incentives;
 
 
 # Filter bubbles
@@ -127,7 +132,7 @@ conferences->"Filter bubbles";
 "Web Publishing"->"Filter bubbles";
 
 
-# privacy
+# keeping "privacy" and "security" together.
 node [shape=box]; "Text Anonymization";
 node [shape=octagon]; Fingerprinting;
 node [shape=octagon]; "Surveillance";
@@ -143,17 +148,22 @@ Adfraud->Fingerprinting;
 "tracking protection"->Fingerprinting;
 Fingerprinting->biometrics;
 AR->security;
+security->Harassment;
+security->"Text Anonymization";
+Harassment->"Text Anonymization";
 
 
 # quantified self and gaming
 "quantified self"->AR;
 "quantified self"->gamification;
 gamification->gaming;
+"Remote collaboration"->"quantified self";
 
 
 # The Router
 node [shape=box]; Router;
 Router->security;
+security->Router;
 Router->Surveillance;
 Router->"tracking protection";
 Router->"quantified self";
@@ -161,6 +171,7 @@ Router->IoT;
 Router->Tor;
 Router->QoS;
 "quantified self"->NLP;
+Router->"content-addressable storage"
 
 
 ##
@@ -176,16 +187,19 @@ node [shape=box]; "HTML merge";
 "HTML merge"->"Literate Programming";
 "Web Publishing"->Harassment;
 "Web Publishing"->incentives;
+"Web Publishing"->"Remote collaboration";
 
 
 # Version control
 "Web Publishing"->"version control";
 "maintenance programming"->"version control";
 "bots"->"version control";
-"Large Data Set Collaboration"->"version control";
 "version control"->"DHT";
 "version control"->"HTML merge";
 "quantified self"->"version control";
+"content-addressable storage"->"Merkle trees";
+"version control"->"Merkle trees";
+"content-addressable storage"->DHT;
 
 
 # Open Source health
@@ -198,11 +212,23 @@ node [shape=box]; "Open Source metrics";
 "Open Source metrics"->bots;
 "Participation"->"Open Source metrics";
 
+
 # Big Data science!
 node [shape=box]; "Large Data Set Collaboration";
+"Large Data Set Collaboration"->"version control";
 "Large Data Set Collaboration"->"DHT";
 "Large Data Set Collaboration"->blockchain;
 "Large Data Set Collaboration"->"data visualization";
+"Large Data Set Collaboration"->"content-addressable storage";
+
+
+# Remote collaboration
+"Remote collaboration"->"version control";
+"Remote collaboration"->conferences;
+"Remote collaboration"->"Large Data Set Collaboration";
+"Remote collaboration"->incentives;
+"Remote collaboration"->AR;
+"Remote collaboration"->VR;
 
 overlap=false
 }
