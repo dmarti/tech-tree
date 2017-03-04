@@ -6,6 +6,7 @@ node [shape=oval]; "tracking protection";
 node [shape=oval]; "bug bounties";
 node [shape=oval]; WebExtensions;
 node [shape=oval]; WebAssembly;
+node [shape=oval]; WebCompat;
 node [shape=oval]; "browser performance";
 node [shape=oval]; "Test Pilot";
 "Test Pilot"->WebExtensions;
@@ -101,7 +102,9 @@ Participation->gamification;
 "Literate Programming"->SEO;
 Burnout->"quantified self";
 "maintenance programming"->Participation;
-
+bots->WebCompat;
+gamification->WebCompat;
+WebCompat->Participation;
 
 
 # Markets and incentives
