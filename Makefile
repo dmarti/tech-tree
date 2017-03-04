@@ -23,5 +23,15 @@ clean :
 	rm -f techtree.gv techtree.svg
 	rm -rf build
 
-.PHONY : all clean deploy gh-pages
+hooks : .git/hooks/pre-push
+
+.git/hooks/% : Makefile
+	echo "#!/bin/sh" > $@
+	echo "make `basename $@`" >> $@
+	chmod 755 $@
+
+pre-push : deploy
+
+.PHONY : all clean deploy hooks gh-pages pre-push
+
 
