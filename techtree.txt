@@ -20,6 +20,7 @@ node [shape=oval]; "sentiment analysis";
 "sentiment analysis"->NLP;
 node [shape=oval]; cryptocurrency;
 node [shape=oval]; blockchain;
+node [shape=oval]; decentralization;
 cryptocurrency->blockchain;
 node [shape=oval]; "Merkle trees";
 node [shape=oval]; "content-addressable storage";
@@ -105,6 +106,7 @@ Burnout->"quantified self";
 bots->WebCompat;
 gamification->WebCompat;
 WebCompat->Participation;
+incentives->decentralization;
 
 
 # Markets and incentives
@@ -120,6 +122,21 @@ gamification->Markets;
 "Idea platform"->gamification;
 incentives->gamification;
 SEO->incentives;
+Markets->decentralization;
+gamification->decentralization;
+
+
+# equity crowdfunding
+node [shape=box]; "Equity crowdfunding";
+"Idea platform"->"Equity crowdfunding";
+"Markets"->"Equity crowdfunding";
+"Remote collaboration"->"Equity crowdfunding";
+gamification->"Equity crowdfunding";
+Participation->"Equity crowdfunding";
+decentralization->"Equity crowdfunding";
+Burnout->"Equity crowdfunding";
+"Remote collaboration"->"Equity crowdfunding";
+incentives->"Equity crowdfunding";
 
 
 # Filter bubbles
@@ -217,6 +234,17 @@ node [shape=box]; "Open Source metrics";
 "Open Source metrics"->"data visualization";
 "Open Source metrics"->bots;
 "Participation"->"Open Source metrics";
+"Equity crowdfunding"->"Open Source metrics"
+SEO->"Open Source metrics";
+
+
+# Prediction markets
+node [shape=box]; "Prediction markets";
+"Open Source metrics"->"Prediction markets"
+incentives->"Prediction markets";
+blockchain->"Prediction markets";
+gamification->"Prediction markets";
+"Prediction markets"->bots;
 
 
 # Big Data science!
