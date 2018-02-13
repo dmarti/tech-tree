@@ -1,16 +1,16 @@
-all : techtree.svg hooks
+all : topics.svg hooks
 
 deploy : all
 	git branch -D gh-pages || true
 	rm -rf build && mkdir -p build
-	cp -a Makefile .git index.html techtree.txt techtree.svg build
+	cp -a Makefile .git index.html *.txt *.svg build
 	make -C build gh-pages
 	rm -rf build
 
 gh-pages :
 	rm -f .git/hooks/pre-push
 	git checkout -b gh-pages
-	git add -f Makefile index.html techtree.txt techtree.svg
+	git add -f Makefile *.html *.txt *.svg
 	git commit -m "this is a temporary branch, do not commit here."
 	git push -f --set-upstream origin gh-pages
 
@@ -21,7 +21,7 @@ gh-pages :
 	dot -Tsvg $< > $@
 
 clean :
-	rm -f techtree.gv techtree.svg
+	rm -f *.gv *.svg
 	rm -rf build
 	git branch -D gh-pages || true
 

@@ -1,7 +1,8 @@
 # tech-tree
 
-Technology tree for open source experiments.  [View
-here](https://dmarti.github.io/tech-tree/).
+Technology tree about stuff I'm interested in.
+
+[View here](https://dmarti.github.io/tech-tree/).
 
 
 ## Setup
@@ -10,6 +11,12 @@ Install graphviz.
 
 ```sh
 sudo dnf install graphviz
+```
+
+Install the git hook to build and deploy before pushing.
+
+```sh
+make hooks
 ```
 
 
