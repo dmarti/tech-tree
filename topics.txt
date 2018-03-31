@@ -1,19 +1,11 @@
-digraph TechnologyTree {
+digraph TopicTree {
 
 # Mozilla technologies
-node [color=red, shape=oval]; Rust;
+node [shape=oval]; Rust;
 node [shape=oval]; "tracking protection";
-node [shape=oval]; "bug bounties";
-node [shape=oval]; WebExtensions;
-node [shape=oval]; WebAssembly;
 node [shape=oval]; WebCompat;
-node [shape=oval]; "browser performance";
-node [shape=oval]; "Test Pilot";
-"Test Pilot"->WebExtensions;
 
 # General research topics
-node [color=black, shape=oval]; AR;
-node [shape=oval]; biometrics;
 node [shape=oval]; DHT;
 node [shape=oval]; NLP;
 node [shape=oval]; "sentiment analysis";
@@ -22,28 +14,16 @@ node [shape=oval]; cryptocurrency;
 node [shape=oval]; blockchain;
 node [shape=oval]; decentralization;
 cryptocurrency->blockchain;
-node [shape=oval]; "Merkle trees";
 node [shape=oval]; "content-addressable storage";
-node [shape=oval]; security;
-node [shape=oval]; microkernels;
-node [shape=oval]; Tor;
-node [shape=oval]; QoS;
 node [shape=oval]; bots;
 bots->NLP;
 node [shape=oval]; "data visualization";
 node [shape=oval]; "version control";
-node [shape=oval]; VR;
 
 
 # General meta topics
-node [shape=oval]; conferences;
-node [shape=oval]; gamification;
-node [shape=oval]; gaming;
-node [shape=oval]; IoT;
 node [shape=oval]; "maintenance programming";
 node [shape=oval]; "quantified self";
-node [shape=oval]; SEO;
-node [shape=oval]; "Literate Programming";
 node [shape=oval]; "Remote collaboration";
 
 
@@ -59,17 +39,6 @@ security->"maintenance programming";
 "maintenance programming"->"Literate Programming";
 
 
-# performance
-"data visualization"->"browser performance";
-gaming->"browser performance";
-"browser performance"->WebAssembly;
-"browser performance"->Rust;
-"data visualization"->VR;
-VR->"browser performance";
-VR->biometrics;
-"browser performance"->QoS;
-
-
 # Web sustainability
 node [shape=box]; "Web Publishing";
 node [shape=box]; incentives;
@@ -79,7 +48,7 @@ node [shape=box]; Markets;
 "Web Publishing"->incentives;
 "Web Publishing"->Markets;
 "Web Publishing"->"tracking protection";
-"tracking protection"->WebExtensions;
+"tracking protection"->"browser extensions";
 
 
 # Participation and community
@@ -138,21 +107,6 @@ Burnout->"Equity crowdfunding";
 "Remote collaboration"->"Equity crowdfunding";
 incentives->"Equity crowdfunding";
 
-
-# Filter bubbles
-node [shape=box]; "Filter Un-bubbling";
-node [shape=octagon]; "Filter bubbles";
-"Filter Un-bubbling"->gamification;
-"Filter Un-bubbling"->WebExtensions;
-"Filter Un-bubbling"->"Filter bubbles";
-"Filter Un-bubbling"->"NLP";
-"Filter Un-bubbling"->"data visualization";
-"Filter bubbles"->"Surveillance";
-Adfraud->"Filter bubbles";
-conferences->"Filter bubbles";
-"Web Publishing"->"Filter bubbles";
-
-
 # keeping "privacy" and "security" together.
 node [shape=box]; "Text Anonymization";
 node [shape=octagon]; Fingerprinting;
@@ -172,28 +126,6 @@ AR->security;
 security->Harassment;
 security->"Text Anonymization";
 Harassment->"Text Anonymization";
-
-
-# quantified self and gaming
-"quantified self"->AR;
-"quantified self"->gamification;
-gamification->gaming;
-"Remote collaboration"->"quantified self";
-"quantified self"->NLP;
-"quantified self"->"sentiment analysis";
-
-
-# The Router
-node [shape=box]; Router;
-Router->security;
-security->Router;
-Router->Surveillance;
-Router->"tracking protection";
-Router->"quantified self";
-Router->IoT;
-Router->Tor;
-Router->QoS;
-Router->"content-addressable storage"
 
 
 ##
@@ -239,12 +171,12 @@ SEO->"Open Source metrics";
 
 
 # Prediction markets
-node [shape=box]; "Prediction markets";
-"Open Source metrics"->"Prediction markets"
-incentives->"Prediction markets";
-blockchain->"Prediction markets";
-gamification->"Prediction markets";
-"Prediction markets"->bots;
+node [shape=box]; "Bug futures markets";
+"Open Source metrics"->"Bug futures markets"
+incentives->"Bug futures markets";
+blockchain->"Bug futures markets";
+gamification->"Bug futures markets";
+"Bug futures markets"->bots;
 
 
 # Big Data science!
@@ -264,7 +196,6 @@ node [shape=box]; "Large Data Set Collaboration";
 "Remote collaboration"->incentives;
 "Remote collaboration"->AR;
 "Remote collaboration"->VR;
-"Remote collaboration"->Router;
 "Remote collaboration"->Burnout;
 
 overlap=false
